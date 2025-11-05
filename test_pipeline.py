@@ -10,10 +10,14 @@ if __name__ == "__main__":
     # calibrator.probe(calibration_file_path="misc/probe_points.csv")
 
     # Model Training
-    my_dataset = datasets.TactileSensorDataset(root='./sensor_calibration_data')
-    touchnet = models.TouchNet()
+    # my_dataset = datasets.TactileSensorDataset(root='./sensor_calibration_data')
+    # touchnet = models.TouchNet()
 
-    p3d.train_model(model=touchnet, dataset=my_dataset, num_epochs=1, batch_size=32)
+    # p3d.train_model(model=touchnet, dataset=my_dataset, num_epochs=1, batch_size=32)
+
+    # Load model
+    touchnet = models.TouchNet()
+    touchnet.load_model(weights_path="weights.pth")
 
     # Depthmap Generation
     # depthmap = p3d.get_depthmap(model=touchnet, image_path="pawn.png", blank_image_path="./sensor_calibration_data/blank_images/blank.png")
