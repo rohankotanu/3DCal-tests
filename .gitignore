@@ -1,0 +1,7 @@
+digit_calibration_data/
+gsmini_calibration_data/
+sensor_calibration_data/
+digit_pretrained_weights.pth
+gsmini_pretrained_weights.pth
+misc/
+.vscode/
