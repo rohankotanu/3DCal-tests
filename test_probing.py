@@ -11,12 +11,12 @@ def test_probing():
     # Try probing sensor
     try:
         digit = p3d.DIGIT("D20966")
-        # ender3 = p3d.Ender3("/dev/ttyUSB0")
-        ender3 = p3d.Ender3("/dev/tty.usbserial-110")
+        ender3 = p3d.Ender3("/dev/ttyUSB0")
+        # ender3 = p3d.Ender3("/dev/tty.usbserial-110")
 
         calibrator = p3d.Calibrator(printer=ender3, sensor=digit)
 
-        calibrator.probe(calibration_file_path="misc/probe_points.csv", save_images=False)
+        calibrator.probe(calibration_file_path="misc/probe_points.csv", save_images=True)
         print(f"\033[92m[Test {num_tests}]: Probing completed successfully.\033[0m")
 
         num_passed += 1

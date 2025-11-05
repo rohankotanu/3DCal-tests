@@ -5,3 +5,4 @@ digit_pretrained_weights.pth
 gsmini_pretrained_weights.pth
 misc/
 .vscode/
+testenv/

@@ -7,8 +7,8 @@ def test_ender():
     global num_tests
     global num_passed
 
-    # ender3 = p3d.Ender3("/dev/ttyUSB0")
-    ender3 = p3d.Ender3("/dev/tty.usbserial-110")
+    ender3 = p3d.Ender3("/dev/ttyUSB0")
+    # ender3 = p3d.Ender3("/dev/tty.usbserial-110")
 
     num_tests += 1
     # Try connecting to the Ender 3

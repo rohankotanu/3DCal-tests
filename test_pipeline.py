@@ -2,20 +2,18 @@ import py3DCal as p3d
 from py3DCal import datasets, models
 
 # Data Collection
-digit = p3d.DIGIT("D20966")
-ender3 = p3d.Ender3("/dev/ttyUSB0")
-calibrator = p3d.Calibrator(printer=ender3, sensor=digit)
+# digit = p3d.DIGIT("D20966")
+# ender3 = p3d.Ender3("/dev/ttyUSB0")
+# calibrator = p3d.Calibrator(printer=ender3, sensor=digit)
 
-calibrator.probe(calibration_file_path="misc/probe_points.csv", save_images=False)
+# calibrator.probe(calibration_file_path="misc/probe_points.csv")
 
 # Model Training
 my_dataset = datasets.TactileSensorDataset(root='./sensor_calibration_data')
-dataset = datasets.DIGIT(root='.', download=True)
-dataset = datasets.GelSightMini(root='.', download=True)
+touchnet = models.TouchNet()
 
-touchnet = models.TouchNet(load_pretrained=True, sensor_type=p3d.SensorType.DIGIT, root=".")
-
-p3d.train_model(model=touchnet, dataset=my_dataset, num_epochs=1, batch_size=32, device="mps")
+p3d.train_model(model=touchnet, dataset=my_dataset, num_epochs=1, batch_size=32)
 
 # Depthmap Generation
-depthmap = p3d.get_depthmap(model=touchnet, image_path="pawn.png", blank_image_path="./sensor_calibration_data/blank_images/blank.png")
+# depthmap = p3d.get_depthmap(model=touchnet, image_path="pawn.png", blank_image_path="./sensor_calibration_data/blank_images/blank.png")
+p3d.save_2d_depthmap(model=touchnet, image_path="./sensor_calibration_data/probe_images//home/rohan/Documents/3DCal/3DCal-tests/sensor_calibration_data/probe_images/1_X5.0Y5.0Z3.png", blank_image_path="./sensor_calibration_data/blank_images/blank.png", save_path="misc/test_depthmap.png")
