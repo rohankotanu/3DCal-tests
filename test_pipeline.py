@@ -17,8 +17,8 @@ if __name__ == "__main__":
 
     # Load model
     touchnet = models.TouchNet()
-    touchnet.load_model(weights_path="weights.pth")
+    touchnet.load_weights(weights_path="weights.pth")
 
     # Depthmap Generation
     # depthmap = p3d.get_depthmap(model=touchnet, image_path="pawn.png", blank_image_path="./sensor_calibration_data/blank_images/blank.png")
-    p3d.save_2d_depthmap(model=touchnet, image_path="./sensor_calibration_data/probe_images/1_X5.0Y5.0Z3.0.png", blank_image_path="./sensor_calibration_data/blank_images/blank.png", save_path="misc/test_depthmap.png")
+    p3d.save_2d_depthmap(model=touchnet, image_path="./sensor_calibration_data/probe_images/1_X5.0Y5.0Z3.0.png", blank_image_path="./sensor_calibration_data/blank_images/blank.png", save_path="misc/test_depthmap2.png")
