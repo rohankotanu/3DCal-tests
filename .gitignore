@@ -1,6 +1,7 @@
 digit_calibration_data/
 gsmini_calibration_data/
 # sensor_calibration_data/
+og_annotations/
 digit_pretrained_weights.pth
 gsmini_pretrained_weights.pth
 misc/
