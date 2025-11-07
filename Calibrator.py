@@ -1,6 +1,7 @@
 import numpy as np
 import time
 import csv
+import cv2
 import os
 from typing import Union
 from pathlib import Path
@@ -250,9 +251,10 @@ class Calibrator:
                 x_prev = x
                 y_prev = y
                 z_prev = z
-                for k in range(4):
-                    print("capturing blank image")
-                    self.sensor.capture_image()
+                if i == 0:
+                    for k in range(4):
+                        print("capturing blank image")
+                        self.sensor.capture_image()
                 # Take desired number of images
                 if save_images == True:
                     # for k in range(4):
