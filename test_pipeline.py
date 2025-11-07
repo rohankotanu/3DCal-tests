@@ -9,16 +9,18 @@ if __name__ == "__main__":
 
     # calibrator.probe(calibration_file_path="misc/probe_points.csv")
 
+    p3d.annotate(dataset_path="./sensor_calibration_data", probe_radius_mm=2.0, img_idxs=(4,0))
+
     # Model Training
     # my_dataset = datasets.TactileSensorDataset(root='./sensor_calibration_data')
     # touchnet = models.TouchNet()
 
     # p3d.train_model(model=touchnet, dataset=my_dataset, num_epochs=1, batch_size=32)
 
-    # Load model
-    touchnet = models.TouchNet()
-    touchnet.load_weights(weights_path="weights.pth")
+    # # Load model
+    # touchnet = models.TouchNet()
+    # touchnet.load_weights(weights_path="weights.pth")
 
-    # Depthmap Generation
-    # depthmap = p3d.get_depthmap(model=touchnet, image_path="pawn.png", blank_image_path="./sensor_calibration_data/blank_images/blank.png")
-    p3d.save_2d_depthmap(model=touchnet, image_path="./sensor_calibration_data/probe_images/1_X5.0Y5.0Z3.0.png", blank_image_path="./sensor_calibration_data/blank_images/blank.png", save_path="misc/test_depthmap2.png")
+    # # Depthmap Generation
+    # # depthmap = p3d.get_depthmap(model=touchnet, image_path="pawn.png", blank_image_path="./sensor_calibration_data/blank_images/blank.png")
+    # p3d.save_2d_depthmap(model=touchnet, image_path="./sensor_calibration_data/probe_images/1_X5.0Y5.0Z3.0.png", blank_image_path="./sensor_calibration_data/blank_images/blank.png", save_path="misc/test_depthmap2.png")
