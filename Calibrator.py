@@ -6,8 +6,8 @@ from typing import Union
 from pathlib import Path
 from PIL import Image
 from tqdm import tqdm
-from .printers.Printer import Printer
-from .sensors.Sensor import Sensor
+from py3DCal import Printer
+from py3DCal import Sensor
 
 class Calibrator:
     """ Calibrator class to automatically probe a tactile sensor.
@@ -219,9 +219,9 @@ class Calibrator:
         x_prev = self.sensor.x_offset
         y_prev = self.sensor.y_offset
         z_prev = self.sensor.z_offset + self.sensor.z_clearance
-
+        
         # Loop through every calibration point
-        for i in tqdm(range(N), desc="Sensor Calibration Progress"):
+        for i in range(N):
             # If specified penetration depth exceeds maximum value, print message
             if abs(self.calibration_points[i][2]) > self.sensor.max_penetration:
                 print("Line " + str(i+1) + ": Maximum penetration depth for sensor exceeded. Skipping calibration point.")
@@ -250,9 +250,13 @@ class Calibrator:
                 x_prev = x
                 y_prev = y
                 z_prev = z
-
+                for k in range(4):
+                    print("capturing blank image")
+                    self.sensor.capture_image()
                 # Take desired number of images
                 if save_images == True:
+                    # for k in range(4):
+                    #     self.sensor.capture_image()
                     with open(os.path.join(data_save_path, "annotations", "probe_data.csv"), 'a', newline='') as csv_file:
                         csv_writer = csv.writer(csv_file)
 
