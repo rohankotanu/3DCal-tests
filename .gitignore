@@ -7,3 +7,5 @@ gsmini_pretrained_weights.pth
 misc/
 .vscode/
 testenv/
+.DS_Store
+__pycache__/
