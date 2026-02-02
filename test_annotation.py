@@ -147,6 +147,38 @@ def test_annotate_three_indices():
 
         num_passed += 1
 
+def test_annotate_outofrange_indices():
+    global num_tests
+    global num_passed
+
+    num_tests += 1
+
+    try:
+        p3d.annotate(dataset_path="digit_calibration_data/", probe_radius_mm=2, img_idxs=[40000, 2])
+
+        print(f"\033[91m[Test {num_tests}]: Annotation with out-of-range index should have failed but didn't.\033[0m\n")
+
+    except ValueError as e:
+        print(f"\033[92m[Test {num_tests}]: Annotation with out-of-range index raised ValueError as expected: {e}\033[0m\n")
+
+        num_passed += 1
+
+def test_annotate_negative_indices():
+    global num_tests
+    global num_passed
+
+    num_tests += 1
+
+    try:
+        p3d.annotate(dataset_path="digit_calibration_data/", probe_radius_mm=2, img_idxs=[-1, 5])
+
+        print(f"\033[91m[Test {num_tests}]: Annotation with negative index should have failed but didn't.\033[0m\n")
+
+    except ValueError as e:
+        print(f"\033[92m[Test {num_tests}]: Annotation with negative index raised ValueError as expected: {e}\033[0m\n")
+
+        num_passed += 1
+
 if __name__ == "__main__":
     test_annotate_no_root()
     test_annotate_nonexistent_root()
@@ -157,5 +189,7 @@ if __name__ == "__main__":
     test_annotate_float_indices()
     test_annotate_one_index()
     test_annotate_three_indices()
+    test_annotate_outofrange_indices()
+    test_annotate_negative_indices()
 
     print(f"{num_passed}/{num_tests} TESTS PASSED.")
